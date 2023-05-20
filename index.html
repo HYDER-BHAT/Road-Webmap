@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        #map {
+            width: 1314px;
+            height: 817px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/ROADMAP_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[18.666597409177122,73.88016910651858],[18.68446950115614,73.91053894549745]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_RM_0');
+        map.getPane('pane_RM_0').style.zIndex = 400;
+        var layer_RM_0 = L.tileLayer('http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}', {
+            pane: 'pane_RM_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_RM_0;
+        map.addLayer(layer_RM_0);
+        function pop_ROADMAP_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ROADMAP</th>\
+                        <td>' + (feature.properties['ROADMAP'] !== null ? autolinker.link(feature.properties['ROADMAP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RCI</th>\
+                        <td>' + (feature.properties['RCI'] !== null ? autolinker.link(feature.properties['RCI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RPI</th>\
+                        <td>' + (feature.properties['RPI'] !== null ? autolinker.link(feature.properties['RPI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MR</th>\
+                        <td>' + (feature.properties['MR'] !== null ? autolinker.link(feature.properties['MR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ROADMAP_1_0(feature) {
+            switch(String(feature.properties['ROADMAP'])) {
+                case 'ALANDI - MARKAL 1':
+                    return {
+                pane: 'pane_ROADMAP_1',
+                opacity: 1,
+                color: 'rgba(255,255,87,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ALANDI - MARKAL 2':
+                    return {
+                pane: 'pane_ROADMAP_1',
+                opacity: 1,
+                color: 'rgba(238,35,59,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ALANDI - MOSHI':
+                    return {
+                pane: 'pane_ROADMAP_1',
+                opacity: 1,
+                color: 'rgba(52,222,22,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ALANDI - PUNE':
+                    return {
+                pane: 'pane_ROADMAP_1',
+                opacity: 1,
+                color: 'rgba(233,248,73,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ALANDI - VADGAON':
+                    return {
+                pane: 'pane_ROADMAP_1',
+                opacity: 1,
+                color: 'rgba(247,239,77,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_ROADMAP_1',
+                opacity: 1,
+                color: 'rgba(146,236,136,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ROADMAP_1');
+        map.getPane('pane_ROADMAP_1').style.zIndex = 401;
+        map.getPane('pane_ROADMAP_1').style['mix-blend-mode'] = 'normal';
+        var layer_ROADMAP_1 = new L.geoJson(json_ROADMAP_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ROADMAP_1',
+            layerName: 'layer_ROADMAP_1',
+            pane: 'pane_ROADMAP_1',
+            onEachFeature: pop_ROADMAP_1,
+            style: style_ROADMAP_1_0,
+        });
+        bounds_group.addLayer(layer_ROADMAP_1);
+        map.addLayer(layer_ROADMAP_1);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        setBounds();
+        var i = 0;
+        layer_ROADMAP_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['ROADMAP'] !== null?String('<div style="color: #ffffff; font-size: 6pt; font-weight: bold; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['ROADMAP']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_ROADMAP_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_ROADMAP_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_ROADMAP_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_ROADMAP_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_ROADMAP_1]);
+        });
+        </script>
+    </body>
+</html>
